@@ -2,14 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    Employee employee;
-    Company company;
-
-    public static void createNewEmployee() {
-        Employee newEmployee = new Employee(getStringFromUser("name"),
-                getStringFromUser("surname"),
-                getIntFromUser("Please enter employee salary: "));
-    }
 
     public static String getStringFromUser(String nameOrSurname) {
         System.out.println("Please enter employee " + nameOrSurname + ": ");
@@ -64,32 +56,28 @@ public class Main {
             addNewEmployee(employeeList);
         }
 
-        String menuList = ("\n" + "Choose what to do: " + "\n" + "\n" +
-                "1 – Print sum of all employees salary" + "\n" + "\n" +
-                "2 – Display all employees data" + "\n" + "\n" +
-                "3 – Add new employee" + "\n" + "\n" +
-                "4 – End program");
+        String menuList = ("""
+
+                Choose what to do:\s
+
+                1 – Print sum of all employees salary
+
+                2 – Display all employees data
+
+                3 – Add new employee
+
+                4 – End program""");
 
 //        int menuOption = getIntFromUser("Please choose menu option");
         while (true) {
             System.out.println(menuList);
             int menuOption = getIntFromUser("Please choose menu option");
             switch (menuOption) {
-                default:
-                    System.out.println(menuList);
-                    break;
-                case 1:
-                    getAllSalaries(employeeList);
-                    break;
-                case 2:
-                    getAllData(employeeList);
-                    break;
-                case 3:
-                    addNewEmployee(employeeList);
-                    break;
-                case 4:
-                    System.exit(0);
-
+                default -> System.out.println(menuList);
+                case 1 -> getAllSalaries(employeeList);
+                case 2 -> getAllData(employeeList);
+                case 3 -> addNewEmployee(employeeList);
+                case 4 -> System.exit(0);
             }
         }
     }
