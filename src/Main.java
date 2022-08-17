@@ -1,13 +1,11 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         Company company = new Company();
+        UserInputHelper helper = new UserInputHelper();
         int totalEmployeesNumber = 5;
 
         for (int i = 0; i < totalEmployeesNumber; i++) {
-            company.addEmplyoee(company.getEmployeeFromUser());
+            company.addEmplyoee(helper.getEmployeeFromUser());
         }
 
         String menuList = ("""
@@ -24,12 +22,12 @@ public class Main {
 
         while (true) {
             System.out.println(menuList);
-            int menuOption = Company.getIntFromUser("Please choose menu option");
+            int menuOption = UserInputHelper.getIntFromUser("Please choose menu option");
             switch (menuOption) {
                 default -> System.out.println(menuList);
                 case 1 -> System.out.println("The sum of all salaries: " + company.getSumOfAllSalaries());
                 case 2 -> company.getAllData();
-                case 3 -> company.addEmplyoee(company.getEmployeeFromUser());
+                case 3 -> company.addEmplyoee(helper.getEmployeeFromUser());
                 case 4 -> System.exit(0);
             }
         }
